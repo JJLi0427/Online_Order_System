@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ljj.mapper.DishMapper">
+
+    <insert id="addDish">
+        INSERT INTO Menu (dish_name, price) VALUE (#{dish_name},#{dish_price})
+    </insert>
+    <update id="updatePricee">
+        UPDATE Meun SET price = #{dish_price} WHERE dish_name = #{dish_name}
+    </update>
+    <delete id="deleteDish">
+        DELETE FROM Meun WHERE dish_name = #{dish_name}
+    </delete>
+    <select id="getDishList" resultType="com.hand.pojo.Books">
+        SELECT * FROM Meun
+    </select>
+    <select id="queryDishName" resultType="com.hand.pojo.Books">
+        SELECT * FROM Menu WHERE dish_name LIKE CONCAT('%',#{dish_name},'%')
+    </select>
+</mapper>
