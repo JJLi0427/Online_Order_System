@@ -43,10 +43,25 @@ body {
 }
 
 .glass-effect {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.5);
     backdrop-filter: blur(10px);
     border-radius: 15px;
     padding: 20px;
+}
+
+a.button {
+    text-decoration: none;
+}
+
+.button-container {
+    display: flex;
+    gap: 3em;
+}
+
+.search-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 2em;
 }
 
 #login-form {
@@ -57,16 +72,7 @@ body {
 
 #login-form input {
     padding: 10px;
-    border-radius: 5px;
+    border-radius: 15px;
     border: none;
     font-size: 1em;
-}
-
-a.button {
-    text-decoration: none;
-}
-
-.button-container {
-    display: flex;
-    gap: 10px;
 }
