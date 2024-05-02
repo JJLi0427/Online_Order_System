@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface DishMapper {
-    List<Dish> LishDish();
+    List<Dish>listDish();
     
-    public Dish getDishById(int dish_id);
+    //public Dish getDishById(int dish_id);
 }
