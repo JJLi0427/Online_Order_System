@@ -1,2 +1,0 @@
-*.jsp linguist-language=html
-src\main\resources\com\ljj\mapper\* linguist-language=sql
