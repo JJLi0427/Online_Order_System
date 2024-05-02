@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="menuManagementStyles.css">
+    <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
     <div class="container">
@@ -11,7 +11,7 @@
             <h1 class="title">菜单管理</h1>
             <table>
                 <tr>
-                    <th>后台id</th>
+                    <th>后台ID</th>
                     <th>菜名</th>
                     <th>价格</th>
                 </tr>

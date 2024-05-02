@@ -34,7 +34,7 @@
                 <input type="text" placeholder="用户" required>
                 <input type="text" placeholder="密码" required>
                 <div class="button-container">
-                    <a href="${pageContext.request.contextPath}/dish/alldish" button class="button" type="submit">登录</a>
+                    <a href="${pageContext.request.contextPath}/dish/alldish" button class="button">登录</a>
                     <button onclick="showIndex()" class="button">返回</button>
                 </div>
             </form>

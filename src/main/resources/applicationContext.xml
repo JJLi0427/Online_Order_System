@@ -15,11 +15,12 @@
 
     <!--关联数据库配置文件-->
     <context:property-placeholder location="classpath:database.properties"/>
+
     <!--数据库连接池-->
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
         <property name="driverClass" value="${jdbc.driver}"/>
-        <property name="url" value="${jdbc.url}"/>
-        <property name="username" value="${jdbc.username}"/>
+        <property name="jdbcUrl" value="${jdbc.url}"/>
+        <property name="user" value="${jdbc.username}"/>
         <property name="password" value="${jdbc.password}"/>
         <property name="maxPoolSize" value="30"/>
         <property name="minPoolSize" value="10"/>
@@ -29,8 +30,9 @@
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <property name="configLocation" value="classpath:mybatis-config.xml"/>
-        <property name="mapperLocation" value="classpath:com/ljj/mapper/*.xml"/>
+        <property name="mapperLocations" value="classpath:com/ljj/mapper/*.xml"/>
     </bean>
+
     <!--spring 自动扫描mybatis的接口并装配-->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
@@ -40,19 +42,19 @@
     <context:component-scan base-package="com.ljj.service"/>
 
     <!--声明式事务-->
-    <bean id="dataSourceTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+    <bean id="txManage" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource"/>
     </bean> 
 
-    <tx:advice id="txAdivce" transaction-manager="txManage">
+    <tx:advice id="txAdvice" transaction-manager="txManage">
         <tx:attributes>
             <tx:method name="*" propagation="REQUIRED"/>
         </tx:attributes>
     </tx:advice>
 
     <aop:config>
-        <aop:ponitut id="txPointcut" expression="execution(* com.ljj.service.*.*(..))"/>
-        <aop:advisor advice-ref="txAdvice" txPointcut-ref="txPointcut">
+        <aop:pointcut id="txPointcut" expression="execution(* com.ljj.service.*.*(..))"/>
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="txPointcut"/>
     </aop:config>
 
 </beans>
