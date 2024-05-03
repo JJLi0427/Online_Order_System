@@ -21,6 +21,9 @@ public class DishController {
     public String list(Model model){
         List<Dish> list = dishService.list();
         model.addAttribute("list", list);
+        if (list != null){
+            System.out.println("初始化成功");
+        }
         return "alldish";
     }
 
@@ -46,7 +49,7 @@ public class DishController {
     public String preupdateDish(@PathVariable int dish_id, Model model){
         Dish dish = dishService.idgetDish(dish_id);
         model.addAttribute("dish", dish);
-        return "updatedish";
+        return "redirect:/dish/alldish";
     }
 
     @RequestMapping("/updatedish")
@@ -56,5 +59,16 @@ public class DishController {
             System.out.println("修改成功");
         }
         return "redirect:/dish/alldish";
+    }
+
+    @RequestMapping("/searchdish")
+    public String searchDish(String dish_name, Model model){
+        List<Dish> list = dishService.searchDish(dish_name);
+        model.addAttribute("list", list);
+        model.addAttribute("searchMode", true);
+        if (list != null){
+            System.out.println("查询成功");
+        }
+        return "alldish";
     }
 }

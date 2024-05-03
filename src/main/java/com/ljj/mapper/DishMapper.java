@@ -15,4 +15,6 @@ public interface DishMapper {
     Dish idgetDish(int dish_id);
 
     int updateDish(Dish dish);
+
+    List<Dish> searchDish(String dish_name);
 }

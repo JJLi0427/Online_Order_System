@@ -23,7 +23,7 @@
         UPDATE Menu SET dish_name = #{dish_name}, price = #{price} WHERE dish_id = #{dish_id}
     </update>
 
-    <select id="queryDish" resultType="com.ljj.pojo.Dish">
-        SELECT * FROM Menu WHERE dish_name LIKE CONCAT('%',#{dish_name},'%')
+    <select id="searchDish" resultType="com.ljj.pojo.Dish">
+        SELECT * FROM Menu WHERE dish_name = #{dish_name}
     </select>
 </mapper>

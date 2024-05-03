@@ -37,4 +37,9 @@ public class DishServiceimpl implements DishService{
         int i = dishMapper.updateDish(dish);
         return i;
     }
+
+    public List<Dish> searchDish(String dish_name){
+        List<Dish> list = dishMapper.searchDish(dish_name);
+        return list;
+    }
 }
