@@ -22,7 +22,7 @@ public class DishController {
         List<Dish> list = dishService.list();
         model.addAttribute("list", list);
         if (list != null){
-            System.out.println("初始化成功");
+            System.out.println("所有菜品加载成功");
         }
         return "alldish";
     }
