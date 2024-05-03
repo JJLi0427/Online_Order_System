@@ -43,14 +43,14 @@ public class DishController {
     }
 
     @RequestMapping("/updatedish/{dish_id}")
-    public String updateDish(@PathVariable int dish_id, Model model){
+    public String preupdateDish(@PathVariable int dish_id, Model model){
         Dish dish = dishService.idgetDish(dish_id);
         model.addAttribute("dish", dish);
         return "updatedish";
     }
 
     @RequestMapping("/updatedish")
-    public String update(Dish dish){
+    public String updateDish(Dish dish){
         int i = dishService.updateDish(dish);
         if (i > 0){
             System.out.println("修改成功");

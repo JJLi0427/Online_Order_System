@@ -20,8 +20,7 @@
     </select>
 
     <update id="updateDish">
-        UPDATE Menu SET dish_name = #{dish_name}, price = #{price} 
-        WHERE dish_id = #{dish_id}
+        UPDATE Menu SET dish_name = #{dish_name}, price = #{price} WHERE dish_id = #{dish_id}
     </update>
 
     <select id="queryDish" resultType="com.ljj.pojo.Dish">
