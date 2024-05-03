@@ -3,19 +3,27 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ljj.mapper.DishMapper">
-
-    <insert id="addDish">
-        INSERT INTO Menu (dish_name, price) VALUE (#{dish_name},#{dish_price})
-    </insert>
-    <update id="updatePricee">
-        UPDATE Menu SET price = #{dish_price} WHERE dish_name = #{dish_name}
-    </update>
-    <delete id="deleteDish">
-        DELETE FROM Menu WHERE dish_name = #{dish_name}
-    </delete>
     <select id="listDish" resultType="com.ljj.pojo.Dish">
         SELECT * FROM Menu
     </select>
+
+    <insert id="addDish">
+        INSERT INTO Menu (dish_name, price) VALUE (#{dish_name},#{price})
+    </insert>
+
+    <delete id="deleteDish">
+        DELETE FROM Menu WHERE dish_id = #{dish_id}
+    </delete>
+
+    <select id="idgetDish" resultType="com.ljj.pojo.Dish">
+        SELECT * FROM Menu WHERE dish_id = #{dish_id}
+    </select>
+
+    <update id="updateDish">
+        UPDATE Menu SET dish_name = #{dish_name}, price = #{price} 
+        WHERE dish_id = #{dish_id}
+    </update>
+
     <select id="queryDish" resultType="com.ljj.pojo.Dish">
         SELECT * FROM Menu WHERE dish_name LIKE CONCAT('%',#{dish_name},'%')
     </select>

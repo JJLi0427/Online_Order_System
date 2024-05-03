@@ -8,5 +8,11 @@ import org.springframework.stereotype.Repository;
 public interface DishMapper {
     List<Dish>listDish();
     
-    //public Dish getDishById(int dish_id);
+    int addDish(Dish dish);
+    
+    int deleteDish(int dish_id);
+
+    Dish idgetDish(int dish_id);
+
+    int updateDish(Dish dish);
 }

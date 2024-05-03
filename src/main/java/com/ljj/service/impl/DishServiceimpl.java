@@ -17,4 +17,24 @@ public class DishServiceimpl implements DishService{
         List<Dish> list = dishMapper.listDish();
         return list;
     }
+
+    public int addDish(Dish dish){
+        int i = dishMapper.addDish(dish);
+        return i;
+    }
+
+    public int deleteDish(int dish_id){
+        int i = dishMapper.deleteDish(dish_id);
+        return i;
+    }
+
+    public Dish idgetDish(int dish_id){
+        Dish dish = dishMapper.idgetDish(dish_id);
+        return dish;
+    }
+
+    public int updateDish(Dish dish){
+        int i = dishMapper.updateDish(dish);
+        return i;
+    }
 }
