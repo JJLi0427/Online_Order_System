@@ -9,14 +9,10 @@
 <body>
     <c:choose>
         <c:when test="${searchMode}">
-            <script type="text/javascript">
-                window.onload = searchDish;
-            </script>
+            <script type="text/javascript">window.onload = searchDish;</script>
         </c:when>
         <c:otherwise>
-            <script type="text/javascript">
-                window.onload = showNormal;
-            </script>
+            <script type="text/javascript">window.onload = showNormal;</script>
         </c:otherwise>
     </c:choose>
     <div class="container">
@@ -55,7 +51,7 @@
                         </c:forEach>
                     </table>
                 </div>
-                <a button href="${pageContext.request.contextPath}/index.jsp#manager" class="button">返回</a>
+                <a button href="${pageContext.request.contextPath}/#manager" class="button">返回</a>
             </div>
 
             <div id="updateForm" style="display: none;">

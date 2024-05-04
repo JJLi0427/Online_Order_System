@@ -1,7 +1,7 @@
 // for index.jsp
 function customAlert(msg, duration) {
     var el = document.createElement("div");
-    el.setAttribute("style", "position:absolute;top:70%;left:50%;transform:translate(-50%, -50%);background:rgba(255, 255, 255, 0.1);backdrop-filter:blur(10px);padding:20px;border-radius:15px;color:white;");
+    el.setAttribute("style", "position:absolute;top:75%;left:50%;transform:translate(-50%, -50%);background:rgba(255, 255, 255, 0.1);backdrop-filter:blur(10px);padding:20px;border-radius:15px;color:white;");
     el.innerHTML = msg;
     setTimeout(function() {
         el.parentNode.removeChild(el);

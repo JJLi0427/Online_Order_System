@@ -10,7 +10,6 @@
         <div class="glass-effect">
             <div id="normal">
                 <h1 class="title">用户管理</h1>
-                <br>
                 <div style="height: 300px; overflow: auto;">
                     <table>
                         <tr>
@@ -29,7 +28,7 @@
                         </c:forEach>
                     </table>
                 </div>
-                <a button href="${pageContext.request.contextPath}/index.jsp#manager" class="button">返回</a>
+                <a button href="${pageContext.request.contextPath}/#manager" class="button">返回</a>
             </div>
         </div>
     </div>
