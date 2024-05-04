@@ -39,6 +39,15 @@ function showManager(check) {
     }
 };
 
+function submitForm(contextPath) {
+    var phone = document.getElementById('phone').value;
+    var people = document.getElementById('people').value;
+    var table = document.getElementById('table').value;
+    var actionUrl = contextPath + "/user/updateuser/" + phone + "/" + people + "/" + table;
+    document.getElementById('login-form').action = actionUrl;
+    document.getElementById('login-form').submit();
+};
+
 // for alldish.jsp
 function showNormal() {
     document.getElementById('normal').style.display = 'block';

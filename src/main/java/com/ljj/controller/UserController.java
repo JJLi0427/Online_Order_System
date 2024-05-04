@@ -27,7 +27,7 @@ public class UserController {
         return "alluser";
     }
 
-    @RequestMapping("/upadteuser/{phone}/{people}/{table}")
+    @RequestMapping("/updateuser/{phone}/{people}/{table}")
     public String updateuser(
         @PathVariable long phone, 
         @PathVariable int people, 
