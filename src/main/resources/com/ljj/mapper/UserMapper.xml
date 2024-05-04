@@ -6,4 +6,16 @@
     <select id="listUser" resultType="com.ljj.pojo.User">
         SELECT * FROM User
     </select>
+
+    <select id="phonegetUser" resultType="com.ljj.pojo.User">
+        SELECT * FROM User WHERE phone = #{phone}
+    </select>
+
+    <update id="updateUser">
+        UPDATE User SET table = #{table}, people = #{people} WHERE user_id = #{user_id}
+    </update>
+
+    <insert id="addUser">
+        INSERT INTO User (user_id, table, people) VALUES (#{user_id}, #{table}, #{people})
+    </insert>
 </mapper>

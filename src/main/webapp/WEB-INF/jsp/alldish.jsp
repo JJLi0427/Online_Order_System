@@ -4,26 +4,7 @@
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles.css">
-    <script>
-        function showNormal() {
-            document.getElementById('normal').style.display = 'block';
-            document.getElementById('updateForm').style.display = 'none';
-            document.getElementById('search').style.display = 'none';
-        }
-        function updateDish(dish_id, dish_name, price) {
-            document.getElementById('normal').style.display = 'none';
-            document.getElementById('updateForm').style.display = 'block';
-            document.getElementById('search').style.display = 'none';
-            document.getElementById('update_dish_id').value = dish_id;
-            document.getElementById('update_dish_name').value = dish_name;
-            document.getElementById('update_price').value = price;
-        }
-        function searchDish() {
-            document.getElementById('normal').style.display = 'none';
-            document.getElementById('updateForm').style.display = 'none';
-            document.getElementById('search').style.display = 'block';
-        }
-    </script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/jsfunc.js"></script>
 </head>
 <body>
     <c:choose>

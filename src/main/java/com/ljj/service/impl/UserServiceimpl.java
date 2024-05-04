@@ -17,4 +17,19 @@ public class UserServiceimpl implements UserService{
         List<User> list = UserMapper.listUser();
         return list;
     }
+
+    public User phonegetUser(long phone){
+        User user = UserMapper.phonegetUser(phone);
+        return user;
+    }
+
+    public int updateUser(User user){
+        int i = UserMapper.updateUser(user);
+        return i;
+    }
+
+    public int addUser(User user){
+        int i = UserMapper.addUser(user);
+        return i;
+    }
 }

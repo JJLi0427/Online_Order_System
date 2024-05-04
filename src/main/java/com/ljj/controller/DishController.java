@@ -49,6 +49,9 @@ public class DishController {
     public String preupdateDish(@PathVariable int dish_id, Model model){
         Dish dish = dishService.idgetDish(dish_id);
         model.addAttribute("dish", dish);
+        if (dish != null){
+            System.out.println("得到修改目标");
+        }
         return "redirect:/dish/alldish";
     }
 

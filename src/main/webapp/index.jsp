@@ -2,6 +2,7 @@
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles.css">
+    <script type="text/javascript" src="${pageContext.request.contextPath}/jsfunc.js"></script>
 </head>
 <body>
     <div id="index" class="container">
@@ -50,42 +51,5 @@
             <button onclick="showIndex()" class="button">返回</button>
         </div>
     </div>
-    <script>
-        window.onload = function() {
-            if (window.location.hash === '#manager') {
-                showManager(true);
-            }
-        };
-        function showUserLogin() {
-            document.getElementById('index').style.display = 'none';
-            document.getElementById('stafflogin').style.display = 'none';
-            document.getElementById('manager').style.display = 'none';
-            document.getElementById('userlogin').style.display = 'block';
-        }
-        function showStaffLogin() {
-            document.getElementById('index').style.display = 'none';
-            document.getElementById('userlogin').style.display = 'none';
-            document.getElementById('manager').style.display = 'none';
-            document.getElementById('stafflogin').style.display = 'block';
-        }
-        function showIndex() {
-            document.getElementById('index').style.display = 'block';
-            document.getElementById('userlogin').style.display = 'none';
-            document.getElementById('stafflogin').style.display = 'none';
-            document.getElementById('manager').style.display = 'none';
-        }
-        function showManager(check) {
-            var username = document.getElementById('username').value;
-            var password = document.getElementById('password').value;
-            if ((username === 'root' && password === 'root') || check) {
-                document.getElementById('index').style.display = 'none';
-                document.getElementById('manager').style.display = 'block';
-                document.getElementById('userlogin').style.display = 'none';
-                document.getElementById('stafflogin').style.display = 'none';
-            } else {
-                alert('用户名或密码错误');
-            }
-        }
-    </script>
 </body>
 </html>

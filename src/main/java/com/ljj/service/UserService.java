@@ -5,4 +5,10 @@ import java.util.List;
 
 public interface UserService {
     List<User> list();
+
+    User phonegetUser(long phone);
+
+    int updateUser(User user);
+
+    int addUser(User user);
 }
