@@ -17,7 +17,7 @@
                             <th style="width:100px;">序号</th>
                             <th style="width:100px;">电话</th>
                             <th style="width:100px;">餐桌号</th>
-                            <th style="width:50px;">用餐人数</th>
+                            <th style="width:100px;">用餐人数</th>
                         </tr>
                         <c:forEach var="user" items="${list}">
                             <tr>

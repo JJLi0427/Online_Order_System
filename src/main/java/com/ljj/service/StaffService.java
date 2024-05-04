@@ -5,4 +5,6 @@ import java.util.List;
 
 public interface StaffService {
     List<Staff> list();
+
+    Staff namegetStaff(String staff_name);
 }

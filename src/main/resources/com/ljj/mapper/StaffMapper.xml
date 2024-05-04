@@ -6,4 +6,8 @@
     <select id="listStaff" resultType="com.ljj.pojo.Staff">
         SELECT * FROM Staff
     </select>
+
+    <select id="namegetStaff" resultType="com.ljj.pojo.Staff">
+        SELECT * FROM Staff WHERE staff_name = #{staff_name}
+    </select>
 </mapper>

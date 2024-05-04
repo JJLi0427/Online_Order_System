@@ -25,4 +25,32 @@ public class StaffController {
         }
         return "allstaff";
     }
+
+    @RequestMapping("/loginstaff")
+    public String loginStaff(Staff inputstaff){ 
+        String staff_name = inputstaff.getStaff_name();
+        String password = inputstaff.getPassword();
+        Staff staff = staffService.namegetStaff(staff_name);
+        boolean fail = false;
+        if (staff != null){
+            System.out.println("得到对应员工");
+            String realpassword = staff.getPassword();
+            if (password.equals(realpassword)){
+                System.out.println("密码正确");
+            } else {
+                System.out.println("密码错误");
+                fail = true;
+            }
+        } else {
+            System.out.println("员工不存在");
+            fail = true;
+        }
+        if (fail){
+            return "redirect:/#stafflogin";
+        }
+        if (staff_name.equals("root")){
+            return "redirect:/#manager";
+        }
+        return "normalstaff";
+    }
 }

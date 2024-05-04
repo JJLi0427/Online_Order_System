@@ -17,7 +17,7 @@
                             <th style="width:100px;">序号</th>
                             <th style="width:100px;">名字</th>
                             <th style="width:100px;">当前订单</th>
-                            <th style="width:50px;">密码</th>
+                            <th style="width:100px;">密码</th>
                         </tr>
                         <c:forEach var="staff" items="${list}">
                             <tr>

@@ -28,12 +28,9 @@
                         <input style="width: 100px; height: 30px; border-radius: 5px; border: none;" type="text" name="dish_name" placeholder="查找菜名" required>
                         <button style="height: 30px; background-color: rgb(134, 234, 247); border-radius: 5px; border: none;" type="submit">🔍</button>
                     </form>
-                </div>
-                <br>
-                <div class="search-container">
                     <form action="${pageContext.request.contextPath}/dish/adddish" method="post">
-                        <input style="width: 90px; height: 30px; border-radius: 5px; border: none;" type="text" name="dish_name" placeholder="菜名" required>
-                        <input style="width: 90px; height: 30px; border-radius: 5px; border: none;" type="text" name="price" placeholder="价格" required>
+                        <input style="width: 100px; height: 30px; border-radius: 5px; border: none;" type="text" name="dish_name" placeholder="菜名" required>
+                        <input style="width: 100px; height: 30px; border-radius: 5px; border: none;" type="text" name="price" placeholder="价格" required>
                         <button style="height: 30px; background-color: rgb(134, 234, 247); border-radius: 5px; border: none;" type="submit">新增菜品</button>
                     </form>
                 </div>

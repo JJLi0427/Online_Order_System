@@ -17,9 +17,9 @@
                             <th style="width:100px;">序号</th>
                             <th style="width:100px;">口味偏好</th>
                             <th style="width:100px;">时间</th>
-                            <th style="width:50px;">菜品</th>
-                            <th style="width:50px;">用户ID</th>
-                            <th style="width:50px;">完成情况</th>
+                            <th style="width:100px;">菜品</th>
+                            <th style="width:100px;">用户ID</th>
+                            <th style="width:100px;">完成情况</th>
                         </tr>
                         <c:forEach var="order" items="${list}">
                             <tr>

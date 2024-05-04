@@ -3,6 +3,10 @@ window.onload = function() {
     if (window.location.hash === '#manager') {
         showManager(true);
     }
+    if (window.location.hash === '#stafflogin') {
+        showStaffLogin();
+        alert('用户名或密码错误');
+    }
 };
 
 function showUserLogin() {
@@ -27,9 +31,7 @@ function showIndex() {
 };
 
 function showManager(check) {
-    var username = document.getElementById('username').value;
-    var password = document.getElementById('password').value;
-    if ((username === 'root' && password === 'root') || check) {
+    if (check) {
         document.getElementById('index').style.display = 'none';
         document.getElementById('manager').style.display = 'block';
         document.getElementById('userlogin').style.display = 'none';

@@ -17,4 +17,9 @@ public class StaffServiceimpl implements StaffService{
         List<Staff> list = StaffMapper.listStaff();
         return list;
     }
+
+    public Staff namegetStaff(String staff_name){
+        Staff staff = StaffMapper.namegetStaff(staff_name);
+        return staff;
+    }
 }
