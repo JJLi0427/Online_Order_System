@@ -10,7 +10,7 @@
         <div class="glass-effect">
             <div id="normal">
                 <h1 class="title">点餐</h1>
-                <a button href="${pageContext.request.contextPath}/index.jsp" class="button">退出</a>
+                <a button href="${pageContext.request.contextPath}/index" class="button">退出</a>
             </div>
         </div>
     </div>

@@ -16,6 +16,12 @@ public class IndexController {
         return "index";
     }
 
+    @RequestMapping("/index")
+    public String toindex2() {
+        logger.info("Redirect to index page");
+        return "index";
+    }
+
     @RequestMapping("/#stafflogin")
     public String tostafflogin() {
         logger.info("Redirect to staff login page");
