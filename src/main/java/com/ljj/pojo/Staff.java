@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 public class Staff {
     private int staff_id;
-    private String dish_name;
+    private String staff_name;
     private long order_id;
     private String password;
 }

@@ -16,7 +16,7 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
 
-    @RequestMapping("/alloder")
+    @RequestMapping("/allorder")
     public String list(Model model){
         List<Order> list = orderService.list();
         model.addAttribute("list", list);

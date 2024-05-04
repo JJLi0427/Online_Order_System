@@ -77,7 +77,7 @@
                         </c:forEach>
                     </table>
                 </div>
-                <a button href="${pageContext.request.contextPath}" class="button">退出后台</a>
+                <a button href="${pageContext.request.contextPath}/index.jsp#manager" class="button">返回</a>
             </div>
 
             <div id="updateForm" style="display: none;">
