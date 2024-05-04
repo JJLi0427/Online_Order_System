@@ -12,7 +12,7 @@
     </select>
 
     <update id="updateUser">
-        UPDATE User SET table = #{table}, people = #{people} WHERE user_id = #{user_id}
+        UPDATE User SET `table` = #{table}, people = #{people} WHERE user_id = #{user_id}
     </update>
 
     <insert id="addUser">
