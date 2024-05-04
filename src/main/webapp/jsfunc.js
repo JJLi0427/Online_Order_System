@@ -1,11 +1,21 @@
 // for index.jsp
+function customAlert(msg, duration) {
+    var el = document.createElement("div");
+    el.setAttribute("style", "position:absolute;top:70%;left:50%;transform:translate(-50%, -50%);background:rgba(255, 255, 255, 0.1);backdrop-filter:blur(10px);padding:20px;border-radius:15px;color:white;");
+    el.innerHTML = msg;
+    setTimeout(function() {
+        el.parentNode.removeChild(el);
+    }, duration);
+    document.body.appendChild(el);
+}
+
 window.onload = function() {
     if (window.location.hash === '#manager') {
         showManager(true);
     }
     if (window.location.hash === '#stafflogin') {
         showStaffLogin();
-        alert('用户名或密码错误');
+        customAlert('用户名或密码错误', 1000);
     }
 };
 

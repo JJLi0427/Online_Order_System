@@ -4,6 +4,8 @@ import com.ljj.service.UserService;
 import com.ljj.pojo.User;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +15,8 @@ import org.springframework.ui.Model;
 @Controller
 @RequestMapping("/user")
 public class UserController {
+    private static final Logger logger = LoggerFactory.getLogger(UserController.class);
+
     @Autowired
     private UserService userService;
 
@@ -21,7 +25,7 @@ public class UserController {
         List<User> list = userService.list();
         model.addAttribute("list", list);
         if (list != null){
-            System.out.println("所有用户加载成功");
+            logger.info("Load all users successfully");
         }
         return "alluser";
     }
@@ -29,21 +33,19 @@ public class UserController {
     @RequestMapping("/updateuser")
     public String updateuser(User inputuser){
         long phone = inputuser.getPhone();
-        int table = inputuser.getTable();
-        int people = inputuser.getPeople();
         User user = userService.phonegetUser(phone);
         if (user != null){
-            System.out.println("得到对应用户");
+            logger.info("Get corresponding user");
         } else {
-            System.out.println("用户不存在");
+            logger.info("User does not exist");
             int i = userService.addUser(inputuser);
             if (i > 0){
-                System.out.println("添加新用户成功");
+                logger.info("Insert user successfully");
             }
         }
         int i = userService.updateUser(user);
         if (i > 0){
-            System.out.println("用户更新成功");
+            logger.info("Update user successfully");
         }
         return "userorder";
     }

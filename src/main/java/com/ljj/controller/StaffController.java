@@ -4,6 +4,8 @@ import com.ljj.service.StaffService;
 import com.ljj.pojo.Staff;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +15,8 @@ import org.springframework.ui.Model;
 @Controller
 @RequestMapping("/staff")
 public class StaffController {
+    private static final Logger logger = LoggerFactory.getLogger(StaffController.class);
+
     @Autowired
     private StaffService staffService;
 
@@ -21,7 +25,7 @@ public class StaffController {
         List<Staff> list = staffService.list();
         model.addAttribute("list", list);
         if (list != null){
-            System.out.println("所有员工加载成功");
+            logger.info("Load all staff successfully");
         }
         return "allstaff";
     }
@@ -33,16 +37,16 @@ public class StaffController {
         Staff staff = staffService.namegetStaff(staff_name);
         boolean fail = false;
         if (staff != null){
-            System.out.println("得到对应员工");
+            logger.info("Get corresponding staff");
             String realpassword = staff.getPassword();
             if (password.equals(realpassword)){
-                System.out.println("密码正确");
+                logger.info("Login successfully");
             } else {
-                System.out.println("密码错误");
+                logger.info("Password is wrong");
                 fail = true;
             }
         } else {
-            System.out.println("员工不存在");
+            logger.info("Staff does not exist");
             fail = true;
         }
         if (fail){
