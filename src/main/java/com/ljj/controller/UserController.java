@@ -27,22 +27,17 @@ public class UserController {
         return "alluser";
     }
 
-    @RequestMapping("/updateuser/{phone}/{people}/{table}")
-    public String updateuser(
-        @PathVariable long phone, 
-        @PathVariable int people, 
-        @PathVariable int table
-    ){
+    @RequestMapping("/updateuser")
+    public String updateuser(User inputuser){
+        long phone = inputuser.getPhone();
+        int table = inputuser.getTable();
+        int people = inputuser.getPeople();
         User user = userService.phonegetUser(phone);
         if (user != null){
             System.out.println("得到对应用户");
         } else {
             System.out.println("用户不存在");
-            user = new User();
-            user.setPhone(phone);
-            user.setPeople(people);
-            user.setTable(table);
-            int i = userService.addUser(user);
+            int i = userService.addUser(inputuser);
             if (i > 0){
                 System.out.println("添加新用户成功");
             }

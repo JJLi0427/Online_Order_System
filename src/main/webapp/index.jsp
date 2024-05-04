@@ -17,12 +17,12 @@
     <div id="userlogin" class="container" style="display:none;">
         <div class="glass-effect">
             <h1 class="title">欢迎光临</h1>
-            <form id="login-form" method="post">
-                <input id="phone" type="text" placeholder="手机号" required>
-                <input id="people" type="number" placeholder="用餐人数" min="1" max="9" required>
-                <input id="table" placeholder="餐桌号" min="1" max="16" required>
+            <form id="login-form" action="${pageContext.request.contextPath}/user/updateuser" method="post">
+                <input id="phone" name="phone" type="text" placeholder="手机号" required>
+                <input id="people" name="people" type="number" placeholder="用餐人数" min="1" max="9" required>
+                <input id="table" name="table" placeholder="餐桌号" min="1" max="16" required>
                 <div class="button-container">
-                    <button onclick="submitForm('${pageContext.request.contextPath}')" class="button" type="submit">登录</button>
+                    <button class="button" type="submit">登录</button>
                     <button onclick="showIndex()" class="button">返回</button>
                 </div>
             </form>

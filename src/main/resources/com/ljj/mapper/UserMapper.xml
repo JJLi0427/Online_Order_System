@@ -16,6 +16,6 @@
     </update>
 
     <insert id="addUser">
-        INSERT INTO User (user_id, table, people) VALUES (#{user_id}, #{table}, #{people})
+        INSERT INTO User (phone, `table`, people) VALUES (#{phone}, #{table}, #{people})
     </insert>
 </mapper>
