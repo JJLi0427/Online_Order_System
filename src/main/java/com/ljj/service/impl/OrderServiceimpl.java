@@ -17,4 +17,14 @@ public class OrderServiceimpl implements OrderService{
         List<Order> list = OrderMapper.listOrder();
         return list;
     }
+
+    public Order idgetOrder(int order_id){
+        Order order = OrderMapper.idgetOrder(order_id);
+        return order;
+    }
+
+    public int completeOrder(int order_id){
+        int i = OrderMapper.completeOrder(order_id);
+        return i;
+    }
 }

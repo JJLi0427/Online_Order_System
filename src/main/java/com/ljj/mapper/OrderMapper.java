@@ -7,4 +7,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface OrderMapper {
     List<Order>listOrder();
+
+    Order idgetOrder(int order_id);
+
+    int completeOrder(int order_id);
 }

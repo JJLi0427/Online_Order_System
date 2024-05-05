@@ -42,15 +42,5 @@
             </form>
         </div>
     </div>
-    <div id="manager" class="container" style="display:none;">
-        <div class="glass-effect">
-            <h1 class="title">管理员</h1>
-            <a href="${pageContext.request.contextPath}/dish/alldish" button class="button">菜品</a>
-            <a href="${pageContext.request.contextPath}/staff/allstaff" button class="button">员工</a>
-            <a href="${pageContext.request.contextPath}/user/alluser" button class="button">用户</a>
-            <a href="${pageContext.request.contextPath}/order/allorder" button class="button">订单</a>
-            <button onclick="showIndex()" class="button">返回</button>
-        </div>
-    </div>
 </body>
 </html>

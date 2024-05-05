@@ -3,6 +3,8 @@ package com.ljj.controller;
 import com.ljj.service.UserService;
 import com.ljj.pojo.User;
 import java.util.List;
+import com.ljj.service.DishService;
+import com.ljj.pojo.Dish;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,6 +22,9 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private DishService dishService;
+
     @RequestMapping("/alluser")
     public String list(Model model){
         List<User> list = userService.list();
@@ -31,7 +36,7 @@ public class UserController {
     }
 
     @RequestMapping("/updateuser")
-    public String updateuser(User inputuser){
+    public String updateuser(User inputuser, Model model){
         long phone = inputuser.getPhone();
         User user = userService.phonegetUser(phone);
         if (user != null){
@@ -46,6 +51,12 @@ public class UserController {
         int i = userService.updateUser(user);
         if (i > 0){
             logger.info("Update user successfully");
+        }
+
+        List<Dish> list = dishService.list();
+        model.addAttribute("list", list);
+        if (list != null){
+            logger.info("Load all dishes successfully");
         }
         return "userorder";
     }

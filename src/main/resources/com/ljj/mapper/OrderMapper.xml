@@ -6,4 +6,12 @@
     <select id="listOrder" resultType="com.ljj.pojo.Order">
         SELECT * FROM Orders
     </select>
+
+    <select id="idgetOrder" resultType="com.ljj.pojo.Order">
+        SELECT * FROM Orders WHERE orderId=#{orderId}
+    </select>
+
+    <update id="completeOrder">
+        UPDATE Orders SET complete=true WHERE order_id=#{order_id}
+    </update>
 </mapper>

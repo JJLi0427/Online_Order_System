@@ -8,28 +8,26 @@
 <body>
     <div class="container">
         <div class="glass-effect">
-            <div id="normal">
-                <h1 class="title">用户管理</h1>
-                <div style="height: 300px; overflow: auto;">
-                    <table>
+            <h1 class="title">用户管理</h1>
+            <div style="height: 300px; overflow: auto;">
+                <table>
+                    <tr>
+                        <th style="width:100px;">序号</th>
+                        <th style="width:100px;">电话</th>
+                        <th style="width:100px;">餐桌号</th>
+                        <th style="width:100px;">用餐人数</th>
+                    </tr>
+                    <c:forEach var="user" items="${list}">
                         <tr>
-                            <th style="width:100px;">序号</th>
-                            <th style="width:100px;">电话</th>
-                            <th style="width:100px;">餐桌号</th>
-                            <th style="width:100px;">用餐人数</th>
+                            <td>${user.user_id}</td>
+                            <td>${user.phone}</td>
+                            <td>${user.table}</td>
+                            <td>${user.people}</td>
                         </tr>
-                        <c:forEach var="user" items="${list}">
-                            <tr>
-                                <td>${user.user_id}</td>
-                                <td>${user.phone}</td>
-                                <td>${user.table}</td>
-                                <td>${user.people}</td>
-                            </tr>
-                        </c:forEach>
-                    </table>
-                </div>
-                <a button href="${pageContext.request.contextPath}/#manager" class="button">返回</a>
+                    </c:forEach>
+                </table>
             </div>
+            <a button href="${pageContext.request.contextPath}/manage" class="button">返回</a>
         </div>
     </div>
 </body>

@@ -51,7 +51,7 @@
                         </c:forEach>
                     </table>
                 </div>
-                <a button href="${pageContext.request.contextPath}/#manager" class="button">返回</a>
+                <a button href="${pageContext.request.contextPath}/manage" class="button">返回</a>
             </div>
 
             <div id="updateForm" style="display: none;">

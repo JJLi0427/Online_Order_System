@@ -8,32 +8,35 @@
 <body>
     <div class="container">
         <div class="glass-effect">
-            <div id="normal">
-                <h1 class="title">订单管理</h1>
-                <div style="height: 300px; overflow: auto;">
-                    <table>
+            <h1 class="title">订单管理</h1>
+            <div style="height: 300px; overflow: auto;">
+                <table>
+                    <tr>
+                        <th style="width:100px;">序号</th>
+                        <th style="width:100px;">口味偏好</th>
+                        <th style="width:100px;">时间</th>
+                        <th style="width:100px;">菜品</th>
+                        <th style="width:100px;">用户ID</th>
+                        <th style="width:100px;">完成情况</th>
+                        <th style="width:50px;">操作</th>
+                    </tr>
+                    <c:forEach var="order" items="${list}">
                         <tr>
-                            <th style="width:100px;">序号</th>
-                            <th style="width:100px;">口味偏好</th>
-                            <th style="width:100px;">时间</th>
-                            <th style="width:100px;">菜品</th>
-                            <th style="width:100px;">用户ID</th>
-                            <th style="width:100px;">完成情况</th>
+                            <td>${order.order_id}</td>
+                            <td>${order.prefer}</td>
+                            <td>${order.time}</td>
+                            <td>${order.dish_list}</td>
+                            <td>${order.user_id}</td>
+                            <td>${order.complete}</td>
+                            <c:choose>
+                                <c:when test='${order.complete == false}'><td><a href="${pageContext.request.contextPath}/order/completeorder/${order.order_id}/${type}" style="text-decoration: none;">☑️</a></td></c:when>
+                                <c:otherwise><td>🟢</td></c:otherwise>
+                            </c:choose>
                         </tr>
-                        <c:forEach var="order" items="${list}">
-                            <tr>
-                                <td>${order.order_id}</td>
-                                <td>${order.prefer}</td>
-                                <td>${order.time}</td>
-                                <td>${order.dish_list}</td>
-                                <td>${order.user_id}</td>
-                                <td>${order.complete}</td>
-                            </tr>
-                        </c:forEach>
-                    </table>
-                </div>
-                <a button href="${pageContext.request.contextPath}/#manager" class="button">返回</a>
+                    </c:forEach>
+                </table>
             </div>
+            <a button href="<c:choose><c:when test='${type == "staff"}'>${pageContext.request.contextPath}/index</c:when><c:otherwise>${pageContext.request.contextPath}/manage</c:otherwise></c:choose>" class="button">返回</a>
         </div>
     </div>
 </body>

@@ -22,15 +22,15 @@ public class IndexController {
         return "index";
     }
 
-    @RequestMapping("/#stafflogin")
+    @RequestMapping("/loginfail")
     public String tostafflogin() {
         logger.info("Redirect to staff login page");
         return "redirect:/index/#stafflogin";
     }
 
-    @RequestMapping("/#manager")
+    @RequestMapping("/manage")
     public String tomanager() {
-        logger.info("Redirect to manager page");
-        return "redirect:/index/#manager";
+        logger.info("Redirect to manage page");
+        return "manage";
     }
 }

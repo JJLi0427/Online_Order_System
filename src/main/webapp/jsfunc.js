@@ -10,9 +10,6 @@ function customAlert(msg, duration) {
 }
 
 window.onload = function() {
-    if (window.location.hash === '#manager') {
-        showManager(true);
-    }
     if (window.location.hash === '#stafflogin') {
         showStaffLogin();
         customAlert('用户名或密码错误', 1000);
@@ -22,14 +19,12 @@ window.onload = function() {
 function showUserLogin() {
     document.getElementById('index').style.display = 'none';
     document.getElementById('stafflogin').style.display = 'none';
-    document.getElementById('manager').style.display = 'none';
     document.getElementById('userlogin').style.display = 'block';
 };
 
 function showStaffLogin() {
     document.getElementById('index').style.display = 'none';
     document.getElementById('userlogin').style.display = 'none';
-    document.getElementById('manager').style.display = 'none';
     document.getElementById('stafflogin').style.display = 'block';
 };
 
@@ -37,18 +32,6 @@ function showIndex() {
     document.getElementById('index').style.display = 'block';
     document.getElementById('userlogin').style.display = 'none';
     document.getElementById('stafflogin').style.display = 'none';
-    document.getElementById('manager').style.display = 'none';
-};
-
-function showManager(check) {
-    if (check) {
-        document.getElementById('index').style.display = 'none';
-        document.getElementById('manager').style.display = 'block';
-        document.getElementById('userlogin').style.display = 'none';
-        document.getElementById('stafflogin').style.display = 'none';
-    } else {
-        alert('用户名或密码错误');
-    }
 };
 
 function submitForm(contextPath) {

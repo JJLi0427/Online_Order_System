@@ -5,4 +5,8 @@ import java.util.List;
 
 public interface OrderService {
     List<Order> list();
+
+    Order idgetOrder(int order_id);
+
+    int completeOrder(int order_id);
 }

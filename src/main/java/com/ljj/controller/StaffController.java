@@ -51,12 +51,12 @@ public class StaffController {
         }
         if (fail){
             logger.info("Login failed, redirect to staff login page");
-            return "redirect:/#stafflogin";
+            return "redirect:/loginfail";
         }
         if (staff_name.equals("root")){
             logger.info("Login as manager, redirect to manager page");
-            return "redirect:/#manager";
+            return "manage";
         }
-        return "normalstaff";
+        return "redirect:/order/allorder/staff";
     }
 }

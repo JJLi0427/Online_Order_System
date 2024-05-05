@@ -16,6 +16,8 @@
     <!--关联数据库配置文件-->
     <context:property-placeholder location="classpath:database.properties"/>
 
+    <!-- <bean id="logbackConfigListener" class="ch.qos.logback.ext.spring.web.LogbackConfigListener" /> -->
+
     <!--数据库连接池-->
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
         <property name="driverClass" value="${jdbc.driver}"/>
