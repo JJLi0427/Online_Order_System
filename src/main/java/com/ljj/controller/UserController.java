@@ -6,6 +6,8 @@ import java.util.List;
 import com.ljj.service.DishService;
 import com.ljj.pojo.Dish;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +28,11 @@ public class UserController {
     private DishService dishService;
 
     @RequestMapping("/alluser")
-    public String list(Model model){
+    public String list(Model model, HttpServletRequest request){
+        if (request.getSession().getAttribute("fromManage") == null) {
+            return "redirect:/loginfail";
+        }
+        request.getSession().removeAttribute("fromManage");
         List<User> list = userService.list();
         model.addAttribute("list", list);
         if (list != null){
@@ -36,7 +42,7 @@ public class UserController {
     }
 
     @RequestMapping("/updateuser")
-    public String updateuser(User inputuser, Model model){
+    public String updateuser(User inputuser, Model model, HttpServletRequest request){
         long phone = inputuser.getPhone();
         User user = userService.phonegetUser(phone);
         if (user != null){
@@ -58,6 +64,7 @@ public class UserController {
         if (list != null){
             logger.info("Load all dishes successfully");
         }
-        return "userorder";
+        request.getSession().setAttribute("loginUser", true);
+        return "redirect:/userorder";
     }
 }

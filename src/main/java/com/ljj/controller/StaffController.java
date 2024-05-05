@@ -3,6 +3,7 @@ package com.ljj.controller;
 import com.ljj.service.StaffService;
 import com.ljj.pojo.Staff;
 import java.util.List;
+import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,7 +22,11 @@ public class StaffController {
     private StaffService staffService;
 
     @RequestMapping("/allstaff")
-    public String list(Model model){
+    public String list(Model model, HttpServletRequest request){
+        if (request.getSession().getAttribute("fromManage") == null) {
+            return "redirect:/loginfail";
+        }
+        request.getSession().removeAttribute("fromManage");
         List<Staff> list = staffService.list();
         model.addAttribute("list", list);
         if (list != null){
@@ -31,7 +36,7 @@ public class StaffController {
     }
 
     @RequestMapping("/loginstaff")
-    public String loginStaff(Staff inputstaff){ 
+    public String loginStaff(Staff inputstaff, HttpServletRequest request){ 
         String staff_name = inputstaff.getStaff_name();
         String password = inputstaff.getPassword();
         Staff staff = staffService.namegetStaff(staff_name);
@@ -54,9 +59,11 @@ public class StaffController {
             return "redirect:/loginfail";
         }
         if (staff_name.equals("root")){
+            request.getSession().setAttribute("loginManage", true);
             logger.info("Login as manager, redirect to manager page");
-            return "manage";
+            return "redirect:/manage";
         }
+        request.getSession().setAttribute("loginStaff", true);
         return "redirect:/order/allorder/staff";
     }
 }

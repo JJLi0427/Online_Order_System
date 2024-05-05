@@ -1,5 +1,7 @@
 package com.ljj.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -11,15 +13,18 @@ public class IndexController {
     private static final Logger logger = LoggerFactory.getLogger(IndexController.class);
 
     @RequestMapping("/")
-    public String toindex() {
+    public String toindex(HttpServletRequest request) {
         logger.info("Redirect to index page");
+        request.getSession().removeAttribute("loginStaff");
+        request.getSession().removeAttribute("loginManage");
+        request.getSession().removeAttribute("loginUser");
+        request.getSession().removeAttribute("fromManage");
         return "index";
     }
 
     @RequestMapping("/index")
     public String toindex2() {
-        logger.info("Redirect to index page");
-        return "index";
+        return "redirect:/";
     }
 
     @RequestMapping("/loginfail")
@@ -28,9 +33,27 @@ public class IndexController {
         return "redirect:/index/#stafflogin";
     }
 
+    @RequestMapping("/userfail")
+    public String touserlogin() {
+        logger.info("Redirect to user login page");
+        return "redirect:/index/#userlogin";
+    }
+
     @RequestMapping("/manage")
-    public String tomanager() {
+    public String tomanager(HttpServletRequest request) {
+        if (request.getSession().getAttribute("loginManage") == null) {
+            return "redirect:/loginfail";
+        }
+        request.getSession().setAttribute("fromManage", true);
         logger.info("Redirect to manage page");
         return "manage";
+    }
+
+    @RequestMapping("/userorder")
+    public String touserorder(HttpServletRequest request) {
+        if (request.getSession().getAttribute("loginUser") == null) {
+            return "redirect:/userfail";
+        }
+        return "userorder";
     }
 }

@@ -12,7 +12,11 @@ function customAlert(msg, duration) {
 window.onload = function() {
     if (window.location.hash === '#stafflogin') {
         showStaffLogin();
-        customAlert('用户名或密码错误', 1000);
+        customAlert('验证失败，请重新登录', 1000);
+    }
+    if (window.location.hash === '#userlogin') {
+        showUserLogin();
+        customAlert('验证失败，请重新登录', 1000);
     }
 };
 

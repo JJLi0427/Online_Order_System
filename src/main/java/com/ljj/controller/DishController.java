@@ -4,6 +4,8 @@ import com.ljj.service.DishService;
 import com.ljj.pojo.Dish;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +24,11 @@ public class DishController {
     private DishService dishService;
 
     @RequestMapping("/alldish")
-    public String list(Model model){
+    public String list(Model model, HttpServletRequest request){
+        if (request.getSession().getAttribute("fromManage") == null) {
+            return "redirect:/loginfail";
+        }
+        request.getSession().removeAttribute("fromManage");
         List<Dish> list = dishService.list();
         model.addAttribute("list", list);
         if (list != null){
@@ -76,6 +82,6 @@ public class DishController {
         if (list != null){
             logger.info("Search dish successfully");
         }
-        return "alldish";
+        return "redirect:/alldish";
     }
 }
