@@ -4,6 +4,7 @@ import com.ljj.service.StaffService;
 import com.ljj.pojo.Staff;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -65,5 +66,23 @@ public class StaffController {
         }
         request.getSession().setAttribute("loginStaff", true);
         return "redirect:/order/allorder/staff";
+    }
+
+    @RequestMapping("/deletdstaff/{staff_id}")
+    public String deleteStaff(@PathVariable int staff_id){
+        int i = staffService.deleteStaff(staff_id);
+        if (i > 0){
+            logger.info("Delete staff successfully");
+        }
+        return "redirect:/staff/allstaff";
+    }
+
+    @RequestMapping("/addstaff")
+    public String toAddStaff(Staff staff){
+        int i = staffService.addStaff(staff);
+        if (i > 0){
+            logger.info("Insert staff successfully");
+        }
+        return "redirect:/staff/allstaff";
     }
 }

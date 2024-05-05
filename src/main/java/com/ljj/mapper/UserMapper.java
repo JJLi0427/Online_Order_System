@@ -10,6 +10,8 @@ public interface UserMapper {
 
     User phonegetUser(long phone);
 
+    User idgetUser(int user_id);
+
     int updateUser(User user);
 
     int addUser(User user);

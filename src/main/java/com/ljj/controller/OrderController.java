@@ -45,14 +45,16 @@ public class OrderController {
     }
 
     @RequestMapping("/completeorder/{order_id}/{type}")
-    public String completeOrder(@PathVariable int order_id, @PathVariable String type){
+    public String completeOrder(@PathVariable int order_id, @PathVariable String type, HttpServletRequest request){
         int i = orderService.completeOrder(order_id);
         if (i > 0){
             logger.info("Complete order successfully");
         }
         if (type.equals("staff")){
+            request.getSession().setAttribute("loginStaff", true);
             return "redirect:/order/allorder/staff";
         } else {
+            request.getSession().setAttribute("fromManage", true);
             return "redirect:/order/allorder/manager";
         }
     }

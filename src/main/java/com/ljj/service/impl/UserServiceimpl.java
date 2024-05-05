@@ -23,6 +23,11 @@ public class UserServiceimpl implements UserService{
         return user;
     }
 
+    public User idgetUser(int user_id){
+        User user = UserMapper.idgetUser(user_id);
+        return user;
+    }
+
     public int updateUser(User user){
         int i = UserMapper.updateUser(user);
         return i;

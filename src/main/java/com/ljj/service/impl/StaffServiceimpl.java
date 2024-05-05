@@ -22,4 +22,14 @@ public class StaffServiceimpl implements StaffService{
         Staff staff = StaffMapper.namegetStaff(staff_name);
         return staff;
     }
+
+    public int deleteStaff(int staff_id){
+        int i = StaffMapper.deleteStaff(staff_id);
+        return i;
+    }
+
+    public int addStaff(Staff staff){
+        int i = StaffMapper.addStaff(staff);
+        return i;
+    }
 }

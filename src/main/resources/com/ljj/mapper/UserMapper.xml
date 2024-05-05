@@ -11,6 +11,10 @@
         SELECT * FROM User WHERE phone = #{phone}
     </select>
 
+    <select id="idgetUser" resultType="com.ljj.pojo.User">
+        SELECT * FROM User WHERE user_id = #{user_id}
+    </select>
+
     <update id="updateUser">
         UPDATE User SET `table` = #{table}, people = #{people} WHERE user_id = #{user_id}
     </update>
