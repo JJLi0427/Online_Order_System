@@ -32,4 +32,9 @@ public class OrderServiceimpl implements OrderService{
         int i = OrderMapper.addOrder(order);
         return i;
     }
+
+    public List<Order> usergetOrder(int user_id){
+        List<Order> list = OrderMapper.usergetOrder(user_id);
+        return list;
+    }
 }

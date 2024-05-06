@@ -59,13 +59,28 @@ public class OrderController {
         }
     }
 
-    @RequestMapping("/addorder")
-    public String addOrder(Order order, HttpServletRequest request){
+    @RequestMapping("/addorder/{user_id}")
+    public String addOrder(HttpServletRequest request, Order order, @PathVariable int user_id){
+        order.setTime(new java.sql.Timestamp(System.currentTimeMillis()));
+        order.setUser_id(user_id);
         int i = orderService.addOrder(order);
         if (i > 0){
             request.getSession().setAttribute("success", true);
             logger.info("Add order successfully");
         }
-        return "redirect:/userorder";
+        String url = "redirect:/order/userorder/" + user_id;
+        return url;
+    }
+
+    @RequestMapping("/userorder/{user_id}")
+    public String userOrder(@PathVariable int user_id, Model model, HttpServletRequest request){
+        List<Order> list = orderService.usergetOrder(user_id);
+        model.addAttribute("userorder", list);
+        model.addAttribute("success", true);
+        model.addAttribute("user_id", user_id);
+        if (list != null){
+            logger.info("Load user orders successfully");
+        }
+        return "userorder";
     }
 }

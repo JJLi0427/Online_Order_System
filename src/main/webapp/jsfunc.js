@@ -72,53 +72,29 @@ function searchDish() {
 // for userorder.jsp
 function showsuccess() {
     document.getElementById('userorder').style.display = 'none';
-    document.getElementById('search').style.display = 'block';
-}
-
-var dish_list = "";
-var prefer = "";
-
-function updatedishlist() {
-    var inputs = document.getElementsByName("num");
-    var newdish_list = "";
-    for (var i = 0; i < inputs.length; i++) {
-        var input = inputs[i];
-        var row = input.parentNode.parentNode;
-        var dishName = row.children[0].innerText;
-        var price = row.children[1].innerText;
-        var num = input.value;
-        newdish_list += dishName + "/" + price + "/" + num + ",";
-    }
-    dish_list = newdish_list.slice(0, -1);
+    document.getElementById('success').style.display = 'block';
 };
 
-function updateprefer() {
-    prefer = document.getElementById('prefer').value;
-}
-
-function sendOrder(user_id) {
-    var timestamp = new Date().getTime();
-    var order = {
-        prefer: prefer,
-        dish_list: dish_list,
-        user_id: user_id,
-        time: timestamp
-    };
-
-    fetch('${pageContext.request.contextPath}/order/addorder', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(order)
-    }).then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
+function sendOrder() {
+    var dish_list = "";
+    var prefer = "";
+    var dish_name = document.getElementsByName("dish_name");
+    var price = document.getElementsByName("price");
+    var inputs = document.getElementsByName("num");
+    var totalNum = 0;
+    for (var i = 0; i < inputs.length; i++) {
+        totalNum += Number(inputs[i].value);
+        if (inputs[i].value === "0") {
+            continue;
         }
-        return response.json();
-    }).then(data => {
-        console.log('Success:', data);
-    }).catch((error) => {
-        console.error('Error:', error);
-    });
+        dish_list += dish_name[i].value.toString() + "/" + price[i].value.toString() + "/" + inputs[i].value.toString() + ",";
+    }
+    dish_list = dish_list.slice(0, -1);
+    if (totalNum === 0) {
+        customAlert("未选择任何菜品，不能提交订单", 1000);
+        return;
+    }
+    document.getElementById('prefer').value = prefer;
+    document.getElementById('dish_list').value = dish_list;
+    document.getElementById('login-form').submit();
 };

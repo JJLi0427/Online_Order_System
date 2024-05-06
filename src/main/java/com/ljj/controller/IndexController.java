@@ -5,7 +5,6 @@ import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
@@ -53,13 +52,9 @@ public class IndexController {
     }
 
     @RequestMapping("/userorder")
-    public String touserorder(HttpServletRequest request, Model model) {
-        if (request.getSession().getAttribute("loginUser") == null && request.getSession().getAttribute("success") == null){
+    public String touserorder(HttpServletRequest request) {
+        if (request.getSession().getAttribute("loginUser") == null){
             return "redirect:/userfail";
-        }
-        if (request.getSession().getAttribute("success") != null){
-            model.addAttribute("success", true);
-            request.getSession().removeAttribute("success");
         }
         return "userorder";
     }

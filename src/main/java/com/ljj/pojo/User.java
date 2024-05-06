@@ -13,6 +13,19 @@ public class User {
     private int table;
     private int people;
 
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
+    }
+    public void setPhone(long phone) {
+        this.phone = phone;
+    }
+    public void setTable(int table) {
+        this.table = table;
+    }
+    public void setPeople(int people) {
+        this.people = people;
+    }
+
     public int getUser_id() {
         return user_id;
     }

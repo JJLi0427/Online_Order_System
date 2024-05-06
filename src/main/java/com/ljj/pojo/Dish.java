@@ -12,6 +12,16 @@ public class Dish {
     private String dish_name;
     private double price;
 
+    public void setDish_id(int dish_id) {
+        this.dish_id = dish_id;
+    }
+    public void setDish_name(String dish_name) {
+        this.dish_name = dish_name;
+    }
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
     public int getDish_id() {
         return dish_id;
     }

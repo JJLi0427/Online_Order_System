@@ -13,6 +13,19 @@ public class Staff {
     private long order_id;
     private String password;
 
+    public void setStaff_id(int staff_id) {
+        this.staff_id = staff_id;
+    }
+    public void setStaff_name(String staff_name) {
+        this.staff_name = staff_name;
+    }
+    public void setOrder_id(long order_id) {
+        this.order_id = order_id;
+    }
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public int getStaff_id() {
         return staff_id;
     }

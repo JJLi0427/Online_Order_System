@@ -7,7 +7,7 @@ import com.ljj.service.DishService;
 import com.ljj.pojo.Dish;
 
 import javax.servlet.http.HttpServletRequest;
-
+import org.springframework.web.bind.annotation.PathVariable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,7 +48,8 @@ public class UserController {
         int user_id = 0;
         if (user != null){
             user_id = user.getUser_id();
-            logger.info("Get corresponding user");
+            logger.info("Get corresponding user, id:" + user_id);
+            inputuser.setUser_id(user_id);
         } else {
             logger.info("User does not exist");
             int i = userService.addUser(inputuser);
@@ -57,7 +58,7 @@ public class UserController {
             }
             user_id = userService.phonegetUser(phone).getUser_id();
         }
-        int i = userService.updateUser(user);
+        int i = userService.updateUser(inputuser);
         if (i > 0){
             logger.info("Update user successfully");
         }
@@ -72,9 +73,13 @@ public class UserController {
         return "userorder";
     }
 
-    @RequestMapping("/back")
-    public String back(HttpServletRequest request){
-        request.getSession().removeAttribute("loginUser");
-        return "redirect:/userorder";
+    @RequestMapping("/back/{user_id}")
+    public String back(HttpServletRequest request, @PathVariable int user_id, Model model){
+        List<Dish> list = dishService.list();
+        model.addAttribute("list", list);
+        model.addAttribute("user_id", user_id);
+        request.getSession().setAttribute("loginUser", true);
+        request.getSession().removeAttribute("success");
+        return "userorder";
     }
 }

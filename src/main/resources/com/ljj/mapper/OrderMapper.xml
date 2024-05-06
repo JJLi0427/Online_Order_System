@@ -24,4 +24,9 @@
 
     <delete id="deleteOrder">
         DELETE FROM Orders WHERE order_id=#{order_id} 
+    </delete>
+
+    <select id="usergetOrder" resultType="com.ljj.pojo.Order">
+        SELECT * FROM Orders WHERE user_id=#{user_id}
+    </select>
 </mapper>

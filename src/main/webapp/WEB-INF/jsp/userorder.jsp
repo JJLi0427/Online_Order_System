@@ -25,19 +25,51 @@
                             <tr>
                                 <td>${dish.dish_name}</td>
                                 <td>${dish.price}</td>
-                                <td><input id="num" name="num" type="number" min="0" max="99"  value="0" style="background:rgba(255, 255, 255, 0.1);backdrop-filter:blur(10px);border-radius:5px;border:none;color:black;text-align:center;" required onchange="updatedishlist()"></td>
+                                <td><input type="hidden" id="dish_name" name="dish_name" value="${dish.dish_name}"><input type="hidden" id="price" name="price" value="${dish.price}"><input id="num" name="num" type="number" min="0" max="99"  value="0" style="background:rgba(255, 255, 255, 0.1);backdrop-filter:blur(10px);border-radius:5px;border:none;color:black;text-align:center;" required></td>
                             </tr>
                         </c:forEach>
                     </table>
                 </div>
-                <input id="prefer" name="prefer" type="text" placeholder="口味偏好" required>
-                <button class="button" onclick="sendOrder('${user_id}')">下单</button>
-                <a button href="${pageContext.request.contextPath}/index" class="button">退出</a>
+                <form id="login-form"  action="${pageContext.request.contextPath}/order/addorder/${user_id}" method="post">
+                    <br>
+                    <input id="prefer" name="prefer" type="text" placeholder="口味偏好">
+                    <div class="button-container">
+                        <input type="hidden" id="dish_list" name="dish_list">
+                        <button class="button" onclick="sendOrder()">下单</button>
+                        <a button href="${pageContext.request.contextPath}/index" class="button">退出</a>
+                    </div>
+                </form>
             </div>
 
             <div id="success" style="display: none;">
                 <h1 class="title">点餐成功</h1>
-                <a button href="${pageContext.request.contextPath}/user/back" class="button">返回</a>
+                <div style="height: 300px; overflow: auto;">
+                    <table>
+                        <tr>
+                            <th style="width:100px;">序号</th>
+                            <th style="width:100px;">口味偏好</th>
+                            <th style="width:200px;">菜品</th>
+                            <th style="width:100px;">时间</th>
+                            <th style="width:100px;">用户电话</th>
+                            <th style="width:50px;">餐桌</th>
+                            <th style="width:50px;">总价</th>
+                            <th style="width:50px;">完成</th>
+                        </tr>
+                        <c:forEach var="order" items="${userorder}">
+                            <tr>
+                                <td>${order.order_id}</td>
+                                <td>${order.prefer}</td>
+                                <td>${order.dish_list}</td>
+                                <td>${order.time}</td>
+                                <td>${order.phone}</td>
+                                <td>${order.table}</td>
+                                <td>${order.total}</td>
+                                <td>${order.complete}</td>
+                            </tr>
+                        </c:forEach>
+                    </table>
+                </div>
+                <a button href="${pageContext.request.contextPath}/user/back/${user_id}" class="button">返回</a>
                 <a button href="${pageContext.request.contextPath}/index" class="button">退出</a>
             </div>
         </div>

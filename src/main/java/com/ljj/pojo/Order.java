@@ -19,16 +19,38 @@ public class Order {
     private long phone;
     private int table;
 
+    public void setPrefer(String prefer) {
+        this.prefer = prefer;
+    }
+    public void setTime(java.sql.Timestamp time) {
+        this.time = time;
+    }
     public void setDish_list(String dish_list) {
         this.dish_list = dish_list;
-        String[] dishes = dish_list.split(",");
-        total = 0;
+        setTotal(); 
+    }
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
+    }
+    public void setComplete(boolean complete) {
+        this.complete = complete;
+    }
+    public void setTotal() {
+        String[] dishes = this.dish_list.split(",");
+        double total = 0;
         for (String dish : dishes) {
             String[] dishDetails = dish.split("/");
             double price = Double.parseDouble(dishDetails[1]);
             int quantity = Integer.parseInt(dishDetails[2]);
             total += price * quantity;
         }
+        this.total = total;
+    }
+    public void setPhone(long phone) {
+        this.phone = phone;
+    }
+    public void setTable(int table) {
+        this.table = table;
     }
 
     public long getOrder_id() {
