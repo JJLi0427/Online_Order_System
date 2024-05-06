@@ -60,11 +60,12 @@ public class OrderController {
     }
 
     @RequestMapping("/addorder")
-    public String addOrder(Order order){
+    public String addOrder(Order order, HttpServletRequest request){
         int i = orderService.addOrder(order);
         if (i > 0){
+            request.getSession().setAttribute("success", true);
             logger.info("Add order successfully");
         }
-        return "success";
+        return "redirect:/userorder";
     }
 }

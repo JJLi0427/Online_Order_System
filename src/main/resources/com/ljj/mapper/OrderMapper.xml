@@ -21,4 +21,7 @@
         INSERT INTO Orders (prefer, time, dish_list, complete, user_id) 
         VALUES (#{prefer}, #{time}, #{dish_list}, 0, #{user_id})
     </insert>
+
+    <delete id="deleteOrder">
+        DELETE FROM Orders WHERE order_id=#{order_id} 
 </mapper>

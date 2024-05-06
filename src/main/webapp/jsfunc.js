@@ -68,3 +68,57 @@ function searchDish() {
     document.getElementById('updateForm').style.display = 'none';
     document.getElementById('search').style.display = 'block';
 };
+
+// for userorder.jsp
+function showsuccess() {
+    document.getElementById('userorder').style.display = 'none';
+    document.getElementById('search').style.display = 'block';
+}
+
+var dish_list = "";
+var prefer = "";
+
+function updatedishlist() {
+    var inputs = document.getElementsByName("num");
+    var newdish_list = "";
+    for (var i = 0; i < inputs.length; i++) {
+        var input = inputs[i];
+        var row = input.parentNode.parentNode;
+        var dishName = row.children[0].innerText;
+        var price = row.children[1].innerText;
+        var num = input.value;
+        newdish_list += dishName + "/" + price + "/" + num + ",";
+    }
+    dish_list = newdish_list.slice(0, -1);
+};
+
+function updateprefer() {
+    prefer = document.getElementById('prefer').value;
+}
+
+function sendOrder(user_id) {
+    var timestamp = new Date().getTime();
+    var order = {
+        prefer: prefer,
+        dish_list: dish_list,
+        user_id: user_id,
+        time: timestamp
+    };
+
+    fetch('${pageContext.request.contextPath}/order/addorder', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(order)
+    }).then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    }).then(data => {
+        console.log('Success:', data);
+    }).catch((error) => {
+        console.error('Error:', error);
+    });
+};

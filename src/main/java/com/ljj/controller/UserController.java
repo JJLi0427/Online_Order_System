@@ -71,4 +71,10 @@ public class UserController {
         request.getSession().setAttribute("loginUser", true);
         return "userorder";
     }
+
+    @RequestMapping("/back")
+    public String back(HttpServletRequest request){
+        request.getSession().removeAttribute("loginUser");
+        return "redirect:/userorder";
+    }
 }
