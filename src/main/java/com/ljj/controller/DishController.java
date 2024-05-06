@@ -38,7 +38,8 @@ public class DishController {
     }
 
     @RequestMapping("/adddish")
-    public String toAddDish(Dish dish){
+    public String toAddDish(Dish dish, HttpServletRequest request){
+        request.getSession().setAttribute("fromManage", true);
         int i = dishService.addDish(dish);
         if (i > 0){
             logger.info("Insert dish successfully");
@@ -47,7 +48,8 @@ public class DishController {
     }
 
     @RequestMapping("/deletedish/{dish_id}")
-    public String deleteDish(@PathVariable int dish_id){
+    public String deleteDish(@PathVariable int dish_id, HttpServletRequest request){
+        request.getSession().setAttribute("fromManage", true);
         int i = dishService.deleteDish(dish_id);
         if (i > 0){
             logger.info("Delete dish successfully");
@@ -66,7 +68,8 @@ public class DishController {
     }
 
     @RequestMapping("/updatedish")
-    public String updateDish(Dish dish){
+    public String updateDish(Dish dish, HttpServletRequest request){
+        request.getSession().setAttribute("fromManage", true);
         int i = dishService.updateDish(dish);
         if (i > 0){
             logger.info("Update dish successfully");
@@ -75,13 +78,20 @@ public class DishController {
     }
 
     @RequestMapping("/searchdish")
-    public String searchDish(String dish_name, Model model){
+    public String searchDish(String dish_name, Model model, HttpServletRequest request){
+        request.getSession().setAttribute("fromMange", true);
         List<Dish> list = dishService.searchDish(dish_name);
         model.addAttribute("list", list);
         model.addAttribute("searchMode", true);
         if (list != null){
             logger.info("Search dish successfully");
         }
-        return "redirect:/alldish";
+        return "alldish";
+    }
+
+    @RequestMapping("/back")
+    public String back(HttpServletRequest request){
+        request.getSession().setAttribute("fromManage", true);
+        return "redirect:/dish/alldish";
     }
 }

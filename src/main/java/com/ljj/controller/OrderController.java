@@ -58,4 +58,13 @@ public class OrderController {
             return "redirect:/order/allorder/manager";
         }
     }
+
+    @RequestMapping("/addorder")
+    public String addOrder(Order order){
+        int i = orderService.addOrder(order);
+        if (i > 0){
+            logger.info("Add order successfully");
+        }
+        return "success";
+    }
 }

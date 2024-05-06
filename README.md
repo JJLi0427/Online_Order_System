@@ -66,7 +66,7 @@ CREATE TABLE `Orders` (
   `order_id` bigint(12) unsigned zerofill NOT NULL AUTO_INCREMENT,
   `prefer` varchar(255) DEFAULT NULL,
   `time` datetime NOT NULL,
-  `dish_list` json NOT NULL,
+  `dish_list` text NOT NULL,
   `user_id` int(8) unsigned NOT NULL,
   `complete` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`order_id`) USING HASH,

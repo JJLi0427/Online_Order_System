@@ -1,10 +1,6 @@
 package com.ljj.pojo;
 
 import java.text.DecimalFormat;
-import java.util.Map;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.core.type.TypeReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,25 +19,16 @@ public class Order {
     private long phone;
     private int table;
 
-    public String formatDishList(String dish_list) {
-        String result = dish_list.replaceAll("\"\\w+\"\\s*:\\s*\\d+(\\.\\d+)?,", "");
-        result = result.replaceAll("[{}\"]", "");
-        result = result.replaceAll(", ", ",");
-        return result;
-    }
-
     public void setDish_list(String dish_list) {
         this.dish_list = dish_list;
-        ObjectMapper mapper = new ObjectMapper();
-        try {
-            Map<String, Double> dishes = mapper.readValue(dish_list, new TypeReference<Map<String, Double>>(){});
-            for (Double price : dishes.values()) {
-                total += price;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
+        String[] dishes = dish_list.split(",");
+        total = 0;
+        for (String dish : dishes) {
+            String[] dishDetails = dish.split("/");
+            double price = Double.parseDouble(dishDetails[1]);
+            int quantity = Integer.parseInt(dishDetails[2]);
+            total += price * quantity;
         }
-        this.dish_list = formatDishList(dish_list);
     }
 
     public long getOrder_id() {

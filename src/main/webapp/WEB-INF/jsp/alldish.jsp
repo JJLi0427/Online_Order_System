@@ -82,7 +82,7 @@
                         </c:forEach>
                     </table>
                 </div>
-                <a href="${pageContext.request.contextPath}/dish/alldish" button class="button">返回</a>
+                <a href="${pageContext.request.contextPath}/dish/back" button class="button">返回</a>
             </div>
         </div>
     </div>

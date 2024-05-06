@@ -27,4 +27,9 @@ public class OrderServiceimpl implements OrderService{
         int i = OrderMapper.completeOrder(order_id);
         return i;
     }
+
+    public int addOrder(Order order){
+        int i = OrderMapper.addOrder(order);
+        return i;
+    }
 }

@@ -11,4 +11,6 @@ public interface OrderMapper {
     Order idgetOrder(int order_id);
 
     int completeOrder(int order_id);
+
+    int addOrder(Order order);
 }

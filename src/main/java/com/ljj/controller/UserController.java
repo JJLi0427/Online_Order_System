@@ -45,7 +45,9 @@ public class UserController {
     public String updateuser(User inputuser, Model model, HttpServletRequest request){
         long phone = inputuser.getPhone();
         User user = userService.phonegetUser(phone);
+        int user_id = 0;
         if (user != null){
+            user_id = user.getUser_id();
             logger.info("Get corresponding user");
         } else {
             logger.info("User does not exist");
@@ -53,6 +55,7 @@ public class UserController {
             if (i > 0){
                 logger.info("Insert user successfully");
             }
+            user_id = userService.phonegetUser(phone).getUser_id();
         }
         int i = userService.updateUser(user);
         if (i > 0){
@@ -61,10 +64,11 @@ public class UserController {
 
         List<Dish> list = dishService.list();
         model.addAttribute("list", list);
+        model.addAttribute("user_id", user_id);
         if (list != null){
             logger.info("Load all dishes successfully");
         }
         request.getSession().setAttribute("loginUser", true);
-        return "redirect:/userorder";
+        return "userorder";
     }
 }
