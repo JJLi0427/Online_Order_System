@@ -97,3 +97,23 @@ To deploy the application on Tomcat:
 2. Start Tomcat by running the startup.sh (or startup.bat on Windows) script in the bin directory of your Tomcat installation.
 3. The application should now be accessible at http://localhost:8080/ordersystem, assuming Tomcat is running on localhost and port 8080.
 Please adjust the URL according to your Tomcat configuration.
+
+## WEB Proxy
+Proxy projects through Apache: 
+Install Apache in your web server and write a proxy file like this sample
+```xml
+# file name is your server domain or ip
+<VirtualHost *:80>
+        ServerName yourdomain.com/IP
+        ProxyRequests Off
+        ProxyMaxForwards 100
+        ProxyPreserveHost On
+        ProxyPass / projectdomain.com/IP:8080/
+        ProxyPassReverse / projectdomain.com/IP:8080/
+ 
+        <Proxy *>
+                Order Deny,Allow
+                Allow from all
+        </Proxy>
+</VirtualHost>
+```
