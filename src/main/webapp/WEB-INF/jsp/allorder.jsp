@@ -22,22 +22,20 @@
                         <th style="width:50px;">完成</th>
                         <th style="width:50px;">操作</th>
                     </tr>
-                    <c:forEach var="order" items="${list}">
-                        <tr>
-                            <td>${order.order_id}</td>
-                            <td>${order.prefer}</td>
-                            <td>${order.dish_list}</td>
-                            <td>${order.time}</td>
-                            <td>${order.phone}</td>
-                            <td>${order.table}</td>
-                            <td>${order.total}</td>
-                            <td>${order.complete}</td>
-                            <c:choose>
-                                <c:when test='${order.complete == false}'><td><a href="${pageContext.request.contextPath}/order/completeorder/${order.order_id}/${type}" style="text-decoration: none;">✅</a></td></c:when>
-                                <c:otherwise><td>⚪</td></c:otherwise>
-                            </c:choose>
-                        </tr>
-                    </c:forEach>
+                    <c:forEach var="order" items="${list}"><tr>
+                        <td>${order.order_id}</td>
+                        <td>${order.prefer}</td>
+                        <td>${order.dish_list}</td>
+                        <td>${order.time}</td>
+                        <td>${order.phone}</td>
+                        <td>${order.table}</td>
+                        <td>${order.total}</td>
+                        <td>${order.complete}</td>
+                        <c:choose>
+                            <c:when test='${order.complete == false}'><td><a href="${pageContext.request.contextPath}/order/completeorder/${order.order_id}/${type}" style="text-decoration: none;">✅</a></td></c:when>
+                            <c:otherwise><td>⚪</td></c:otherwise>
+                        </c:choose>
+                    </tr></c:forEach>
                 </table>
             </div>
             <a button href="<c:choose><c:when test='${type == "staff"}'>${pageContext.request.contextPath}/index</c:when><c:otherwise>${pageContext.request.contextPath}/manage</c:otherwise></c:choose>" class="button">返回</a>

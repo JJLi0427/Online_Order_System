@@ -17,14 +17,12 @@
                         <th style="width:100px;">餐桌号</th>
                         <th style="width:100px;">用餐人数</th>
                     </tr>
-                    <c:forEach var="user" items="${list}">
-                        <tr>
-                            <td>${user.user_id}</td>
-                            <td>${user.phone}</td>
-                            <td>${user.table}</td>
-                            <td>${user.people}</td>
-                        </tr>
-                    </c:forEach>
+                    <c:forEach var="user" items="${list}"><tr>
+                        <td>${user.user_id}</td>
+                        <td>${user.phone}</td>
+                        <td>${user.table}</td>
+                        <td>${user.people}</td>
+                    </tr></c:forEach>
                 </table>
             </div>
             <a button href="${pageContext.request.contextPath}/manage" class="button">返回</a>

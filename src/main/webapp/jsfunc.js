@@ -77,7 +77,6 @@ function showsuccess() {
 
 function sendOrder() {
     var dish_list = "";
-    var prefer = "";
     var dish_name = document.getElementsByName("dish_name");
     var price = document.getElementsByName("price");
     var inputs = document.getElementsByName("num");
@@ -94,7 +93,6 @@ function sendOrder() {
         customAlert("未选择任何菜品，不能提交订单", 1000);
         return;
     }
-    document.getElementById('prefer').value = prefer;
     document.getElementById('dish_list').value = dish_list;
     document.getElementById('login-form').submit();
 };

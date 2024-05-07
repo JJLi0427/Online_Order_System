@@ -34,6 +34,9 @@ public class Order {
     }
     public void setComplete(boolean complete) {
         this.complete = complete;
+        if (complete == true) {
+            this.table = 0;
+        }
     }
     public void setTotal() {
         String[] dishes = this.dish_list.split(",");

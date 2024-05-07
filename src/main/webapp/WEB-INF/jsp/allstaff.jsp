@@ -17,14 +17,12 @@
                         <th style="width:100px;">密码</th>
                         <th style="width:50px;">删除</th>
                     </tr>
-                    <c:forEach var="staff" items="${list}">
-                        <tr>
-                            <td>${staff.staff_id}</td>
-                            <td>${staff.staff_name}</td>
-                            <td>${staff.password}</td>
-                            <td><a href="${pageContext.request.contextPath}/staff/deletestaff/${staff.staff_id}" style="text-decoration: none;">🗑️</a></td>
-                        </tr>
-                    </c:forEach>
+                    <c:forEach var="staff" items="${list}"><tr>
+                        <td>${staff.staff_id}</td>
+                        <td>${staff.staff_name}</td>
+                        <td>${staff.password}</td>
+                        <td><a href="${pageContext.request.contextPath}/staff/deletestaff/${staff.staff_id}" style="text-decoration: none;">🗑️</a></td>
+                    </tr></c:forEach>
                 </table>
             </div>
             <form action="${pageContext.request.contextPath}/staff/addstaff" method="post">

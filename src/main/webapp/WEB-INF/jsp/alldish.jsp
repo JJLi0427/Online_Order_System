@@ -36,15 +36,13 @@
                             <th style="width:50px;">修改</th>
                             <th style="width:50px;">删除</th>
                         </tr>
-                        <c:forEach var="dish" items="${list}">
-                            <tr>
-                                <td>${dish.dish_id}</td>
-                                <td>${dish.dish_name}</td>
-                                <td>${dish.price}</td>
-                                <td><a href="javascript:updateDish(${dish.dish_id}, '${dish.dish_name}', ${dish.price})" style="text-decoration: none;" onclick="updateDish()">✍️</a></td>
-                                <td><a href="${pageContext.request.contextPath}/dish/deletedish/${dish.dish_id}" style="text-decoration: none;">🗑️</a></td>
-                            </tr>
-                        </c:forEach>
+                        <c:forEach var="dish" items="${list}"><tr>
+                            <td>${dish.dish_id}</td>
+                            <td>${dish.dish_name}</td>
+                            <td>${dish.price}</td>
+                            <td><a href="javascript:updateDish(${dish.dish_id}, '${dish.dish_name}', ${dish.price})" style="text-decoration: none;" onclick="updateDish()">✍️</a></td>
+                            <td><a href="${pageContext.request.contextPath}/dish/deletedish/${dish.dish_id}" style="text-decoration: none;">🗑️</a></td>
+                        </tr> </c:forEach>
                     </table>
                 </div>
                 <a button href="${pageContext.request.contextPath}/manage" class="button">返回</a>
@@ -71,15 +69,13 @@
                             <th style="width:50px;">修改</th>
                             <th style="width:50px;">删除</th>
                         </tr>
-                        <c:forEach var="dish" items="${list}">
-                            <tr>
-                                <td>${dish.dish_id}</td>
-                                <td>${dish.dish_name}</td>
-                                <td>${dish.price}</td>
-                                <td><a href="javascript:updateDish(${dish.dish_id}, '${dish.dish_name}', ${dish.price})" style="text-decoration: none;" onclick="updateDish()">✍️</a></td>
-                                <td><a href="${pageContext.request.contextPath}/dish/deletedish/${dish.dish_id}" style="text-decoration: none;">🗑️</a></td>
-                            </tr>
-                        </c:forEach>
+                        <c:forEach var="dish" items="${list}"><tr>
+                            <td>${dish.dish_id}</td>
+                            <td>${dish.dish_name}</td>
+                            <td>${dish.price}</td>
+                            <td><a href="javascript:updateDish(${dish.dish_id}, '${dish.dish_name}', ${dish.price})" style="text-decoration: none;" onclick="updateDish()">✍️</a></td>
+                            <td><a href="${pageContext.request.contextPath}/dish/deletedish/${dish.dish_id}" style="text-decoration: none;">🗑️</a></td>
+                        </tr></c:forEach>
                     </table>
                 </div>
                 <a href="${pageContext.request.contextPath}/dish/back" button class="button">返回</a>
