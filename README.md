@@ -1,5 +1,11 @@
 # Online Order System
 
+## Project Display
+
+The project has designed different user interfaces and entrances for users, administrators, and employees, corresponding to different functions  
+
+![](./display.jpg)
+
 ## Project Structure
 The project follows a typical Maven project structure:
 ```bash
