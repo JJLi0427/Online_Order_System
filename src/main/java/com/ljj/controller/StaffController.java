@@ -47,11 +47,13 @@ public class StaffController {
             String realpassword = staff.getPassword();
             if (password.equals(realpassword)){
                 logger.info("Login successfully");
-            } else {
+            } 
+            else {
                 logger.info("Password is wrong");
                 fail = true;
             }
-        } else {
+        } 
+        else {
             logger.info("Staff does not exist");
             fail = true;
         }
@@ -70,9 +72,16 @@ public class StaffController {
 
     @RequestMapping("/deletdstaff/{staff_id}")
     public String deleteStaff(@PathVariable int staff_id){
-        int i = staffService.deleteStaff(staff_id);
-        if (i > 0){
-            logger.info("Delete staff successfully");
+        Staff staff = staffService.idgeStaff(staff_id);
+        String staff_name = staff.getStaff_name();
+        if (staff_name == "root"){
+            logger.info("Cannot delete root staff");
+        } 
+        else {
+            int i = staffService.deleteStaff(staff_id);
+            if (i > 0){
+                logger.info("Delete staff successfully");
+            }
         }
         return "redirect:/staff/allstaff";
     }
@@ -82,6 +91,16 @@ public class StaffController {
         int i = staffService.addStaff(staff);
         if (i > 0){
             logger.info("Insert staff successfully");
+        }
+        return "redirect:/staff/allstaff";
+    }
+
+    @RequestMapping("/updatestaff/{staff_id}")
+    public String updateStaff(@PathVariable int staff_id, Staff staff){
+        staff.setStaff_id(staff_id);
+        int i = staffService.updateStaff(staff);
+        if (i > 0){
+            logger.info("Update staff successfully");
         }
         return "redirect:/staff/allstaff";
     }

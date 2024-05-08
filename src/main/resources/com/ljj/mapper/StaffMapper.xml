@@ -11,6 +11,10 @@
         SELECT * FROM Staff WHERE staff_name = #{staff_name}
     </select>
 
+    <select id="idgetStaff" resultType="com.ljj.pojo.Staff">
+        SELECT * FROM Staff WHERE staff_id = #{staff_id}
+    </select>
+
     <delete id="deleteStaff">
         DELETE FROM Staff WHERE staff_id = #{staff_id}
     </delete>
@@ -18,4 +22,8 @@
     <insert id="addStaff">
         INSERT INTO Staff (staff_name, password) VALUE (#{staff_name},#{password})
     </insert>
+
+    <update id="updateStaff">
+        UPDATE Staff SET staff_name = #{staff_name}, password = #{password} WHERE staff_id = #{staff_id}
+    </update>
 </mapper>

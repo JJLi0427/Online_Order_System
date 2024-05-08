@@ -23,6 +23,11 @@ public class StaffServiceimpl implements StaffService{
         return staff;
     }
 
+    public Staff idgeStaff(int staff_id){
+        Staff staff = StaffMapper.idgeStaff(staff_id);
+        return staff;
+    }
+
     public int deleteStaff(int staff_id){
         int i = StaffMapper.deleteStaff(staff_id);
         return i;
@@ -30,6 +35,11 @@ public class StaffServiceimpl implements StaffService{
 
     public int addStaff(Staff staff){
         int i = StaffMapper.addStaff(staff);
+        return i;
+    }
+
+    public int updateStaff(Staff staff){
+        int i = StaffMapper.updateStaff(staff);
         return i;
     }
 }

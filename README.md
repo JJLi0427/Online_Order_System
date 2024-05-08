@@ -117,3 +117,7 @@ Install Apache in your web server and write a proxy file like this sample
         </Proxy>
 </VirtualHost>
 ```
+
+## TODO
+- [] Add staff change password function
+- [] User order page can see history order

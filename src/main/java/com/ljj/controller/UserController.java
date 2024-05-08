@@ -42,7 +42,11 @@ public class UserController {
     }
 
     @RequestMapping("/updateuser")
-    public String updateuser(User inputuser, Model model, HttpServletRequest request){
+    public String updateuser(
+        User inputuser, 
+        Model model, 
+        HttpServletRequest request
+    ){
         long phone = inputuser.getPhone();
         User user = userService.phonegetUser(phone);
         int user_id = 0;
@@ -50,7 +54,8 @@ public class UserController {
             user_id = user.getUser_id();
             logger.info("Get corresponding user, id:" + user_id);
             inputuser.setUser_id(user_id);
-        } else {
+        } 
+        else {
             logger.info("User does not exist");
             int i = userService.addUser(inputuser);
             if (i > 0){
@@ -74,7 +79,11 @@ public class UserController {
     }
 
     @RequestMapping("/back/{user_id}")
-    public String back(HttpServletRequest request, @PathVariable int user_id, Model model){
+    public String back(
+        @PathVariable int user_id, 
+        Model model, 
+        HttpServletRequest request
+    ){
         List<Dish> list = dishService.list();
         model.addAttribute("list", list);
         model.addAttribute("user_id", user_id);

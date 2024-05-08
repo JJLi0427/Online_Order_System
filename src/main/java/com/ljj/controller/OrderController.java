@@ -24,8 +24,15 @@ public class OrderController {
     private OrderService orderService;
 
     @RequestMapping("/allorder/{type}")
-    public String list(@PathVariable String type, Model model, HttpServletRequest request){
-        if (request.getSession().getAttribute("fromManage") == null && request.getSession().getAttribute("loginStaff") == null){
+    public String list(
+        @PathVariable String type, 
+        Model model, 
+        HttpServletRequest request
+    ){
+        if (
+            request.getSession().getAttribute("fromManage") == null && 
+            request.getSession().getAttribute("loginStaff") == null
+        ){
             return "redirect:/loginfail";
         }
         request.getSession().removeAttribute("fromManage");
@@ -37,7 +44,8 @@ public class OrderController {
         }
         if (type.equals("staff")){
             model.addAttribute("type", "staff");
-        } else {
+        } 
+        else {
             model.addAttribute("type", "manager");
         }
         logger.info("Staff type: " + type);
@@ -45,7 +53,11 @@ public class OrderController {
     }
 
     @RequestMapping("/completeorder/{order_id}/{type}")
-    public String completeOrder(@PathVariable int order_id, @PathVariable String type, HttpServletRequest request){
+    public String completeOrder(
+        @PathVariable int order_id, 
+        @PathVariable String type, 
+        HttpServletRequest request
+    ){
         int i = orderService.completeOrder(order_id);
         if (i > 0){
             logger.info("Complete order successfully");
@@ -60,7 +72,11 @@ public class OrderController {
     }
 
     @RequestMapping("/addorder/{user_id}")
-    public String addOrder(HttpServletRequest request, Order order, @PathVariable int user_id){
+    public String addOrder(
+        @PathVariable int user_id, 
+        Order order, 
+        HttpServletRequest request
+    ){
         order.setTime(new java.sql.Timestamp(System.currentTimeMillis()));
         order.setUser_id(user_id);
         int i = orderService.addOrder(order);
@@ -73,7 +89,11 @@ public class OrderController {
     }
 
     @RequestMapping("/userorder/{user_id}")
-    public String userOrder(@PathVariable int user_id, Model model, HttpServletRequest request){
+    public String userOrder(
+        @PathVariable int user_id, 
+        Model model, 
+        HttpServletRequest request
+    ){
         List<Order> list = orderService.usergetOrder(user_id);
         model.addAttribute("userorder", list);
         model.addAttribute("success", true);

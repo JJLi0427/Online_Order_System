@@ -10,7 +10,11 @@ public interface StaffMapper {
 
     Staff namegetStaff(String staff_name);
 
+    Staff idgeStaff(int staff_id);
+
     int deleteStaff(int staff_id);
 
     int addStaff(Staff staff);
+
+    int updateStaff(Staff staff);
 }
