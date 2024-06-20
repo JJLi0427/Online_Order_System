@@ -32,13 +32,26 @@
                         <td>${order.total}</td>
                         <td>${order.complete}</td>
                         <c:choose>
-                            <c:when test='${order.complete == false}'><td><a href="${pageContext.request.contextPath}/order/completeorder/${order.order_id}/${type}" style="text-decoration: none;">✅</a></td></c:when>
-                            <c:otherwise><td>⚪</td></c:otherwise>
+                            <c:when test='${order.complete == false}'>
+                                <td><a href="${pageContext.request.contextPath}/order/completeorder/${order.order_id}/${type}" style="text-decoration: none;">✅</a></td>
+                            </c:when>
+                            <c:otherwise>
+                                <td>⚪</td>
+                            </c:otherwise>
                         </c:choose>
                     </tr></c:forEach>
                 </table>
             </div>
-            <a button href="<c:choose><c:when test='${type == "staff"}'>${pageContext.request.contextPath}/index</c:when><c:otherwise>${pageContext.request.contextPath}/manage</c:otherwise></c:choose>" class="button">返回</a>
+            <a button href=
+            "
+                <c:choose>
+                    <c:when test='${type == "staff"}'>${pageContext.request.contextPath}/index</c:when>
+                    <c:otherwise>${pageContext.request.contextPath}/manage</c:otherwise>
+                </c:choose>
+            " class="button">返回</a>
+            <c:if test='${type == "manager"}'>
+                <a button href="${pageContext.request.contextPath}/order/deleteold" class="button">删除三个月以上的订单</a>
+            </c:if>
         </div>
     </div>
 </body>

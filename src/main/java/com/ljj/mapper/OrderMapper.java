@@ -15,4 +15,6 @@ public interface OrderMapper {
     int addOrder(Order order);
 
     List<Order> usergetOrder(int user_id);
+
+    int deleteold();
 }

@@ -8,7 +8,9 @@
 </head>
 <body>
     <c:choose>
-        <c:when test="${success}"><script type="text/javascript">window.onload = showsuccess;</script></c:when>
+        <c:when test="${success}">
+            <script type="text/javascript">window.onload = showsuccess;</script>
+        </c:when>
     </c:choose>
     <div class="container">
         <div class="glass-effect">

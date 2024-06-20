@@ -103,4 +103,13 @@ public class OrderController {
         }
         return "userorder";
     }
+
+    @RequestMapping("/deleteold")
+    public String deleteOld(){
+        int i = orderService.deleteold();
+        if (i > 0){
+            logger.info("Delete old orders successfully");
+        }
+        return "redirect:/order/allorder/manager";
+    }
 }

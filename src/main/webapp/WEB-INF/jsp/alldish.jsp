@@ -8,8 +8,12 @@
 </head>
 <body>
     <c:choose>
-        <c:when test="${searchMode}"><script type="text/javascript">window.onload = searchDish;</script></c:when>
-        <c:otherwise><script type="text/javascript">window.onload = showNormal;</script></c:otherwise>
+        <c:when test="${searchMode}">
+            <script type="text/javascript">window.onload = searchDish;</script>
+        </c:when>
+        <c:otherwise>
+            <script type="text/javascript">window.onload = showNormal;</script>
+        </c:otherwise>
     </c:choose>
     <div class="container">
         <div class="glass-effect">

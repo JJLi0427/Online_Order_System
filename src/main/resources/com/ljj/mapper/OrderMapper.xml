@@ -3,10 +3,14 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ljj.mapper.OrderMapper">
-    <select id="listOrder" resultType="com.ljj.pojo.Order">
+    <!-- <select id="listOrder" resultType="com.ljj.pojo.Order">
         SELECT o.order_id, o.prefer, o.time, o.dish_list, o.complete, u.user_id, u.phone, u.`table`
         FROM Orders o
         JOIN User u ON o.user_id = u.user_id;
+    </select> -->
+    <!-- change to use views -->
+    <select id="listOrder" resultType="com.ljj.pojo.Order">
+        SELECT * FROM OrderDetails;
     </select>
 
     <select id="idgetOrder" resultType="com.ljj.pojo.Order">
@@ -29,4 +33,9 @@
     <select id="usergetOrder" resultType="com.ljj.pojo.Order">
         SELECT * FROM Orders WHERE user_id=#{user_id}
     </select>
+
+    <!-- use procedure to delete old orders -->
+    <update id="deleteold">
+        CALL DeleteOldOrders()
+    </update>
 </mapper>

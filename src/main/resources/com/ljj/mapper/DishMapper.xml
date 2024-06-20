@@ -23,6 +23,7 @@
         UPDATE Menu SET dish_name = #{dish_name}, price = #{price} WHERE dish_id = #{dish_id}
     </update>
 
+    <!-- use index to search -->
     <select id="searchDish" resultType="com.ljj.pojo.Dish">
         SELECT * FROM Menu WHERE dish_name = #{dish_name}
     </select>

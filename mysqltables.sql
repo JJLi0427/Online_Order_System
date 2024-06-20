@@ -5,6 +5,7 @@ CREATE TABLE `Menu` (
   PRIMARY KEY (`dish_id`) USING HASH,
   UNIQUE KEY `dish_name` (`dish_name`) USING HASH
 );
+
 CREATE TABLE `User` (
   `user_id` int(8) unsigned zerofill NOT NULL AUTO_INCREMENT,
   `phone` bigint(11) NOT NULL,
@@ -13,6 +14,7 @@ CREATE TABLE `User` (
   PRIMARY KEY (`user_id`) USING HASH,
   KEY `phone` (`phone`) USING HASH
 );
+
 CREATE TABLE `Orders` (
   `order_id` bigint(12) unsigned zerofill NOT NULL AUTO_INCREMENT,
   `prefer` varchar(255) DEFAULT NULL,
@@ -23,6 +25,7 @@ CREATE TABLE `Orders` (
   PRIMARY KEY (`order_id`) USING HASH,
   CONSTRAINT `Orders_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `User` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 );
+
 CREATE TABLE `Staff` (
   `staff_id` int(6) unsigned zerofill NOT NULL AUTO_INCREMENT,
   `staff_name` varchar(255) NOT NULL,
@@ -32,3 +35,27 @@ CREATE TABLE `Staff` (
   UNIQUE KEY `order_id` (`order_id`) USING HASH,
   CONSTRAINT `Staff_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `Orders` (`order_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 );
+
+CREATE VIEW OrderDetails AS
+SELECT 
+  Orders.order_id,
+  Orders.prefer,
+  Orders.time,
+  Orders.dish_list,
+  Orders.user_id,
+  Orders.complete,
+  User.phone,
+  User.table
+FROM 
+  Orders
+JOIN 
+  User ON Orders.user_id = User.user_id;
+
+DELIMITER //
+CREATE PROCEDURE DeleteOldOrders()
+BEGIN
+    DELETE FROM Orders 
+    WHERE `time` < DATE_SUB(NOW(), INTERVAL 3 MONTH);
+END //
+DELIMITER ;
+

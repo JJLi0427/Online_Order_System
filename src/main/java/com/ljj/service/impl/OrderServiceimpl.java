@@ -37,4 +37,9 @@ public class OrderServiceimpl implements OrderService{
         List<Order> list = OrderMapper.usergetOrder(user_id);
         return list;
     }
+
+    public int deleteold(){
+        int i = OrderMapper.deleteold();
+        return i;
+    }
 }
