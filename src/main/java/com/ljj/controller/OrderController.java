@@ -105,11 +105,12 @@ public class OrderController {
     }
 
     @RequestMapping("/deleteold")
-    public String deleteOld(){
+    public String deleteOld(HttpServletRequest request){
         int i = orderService.deleteold();
         if (i > 0){
             logger.info("Delete old orders successfully");
         }
+        request.getSession().setAttribute("fromManage", true);
         return "redirect:/order/allorder/manager";
     }
 }
