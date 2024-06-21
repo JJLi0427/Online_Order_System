@@ -59,3 +59,22 @@ BEGIN
 END //
 DELIMITER ;
 
+DELIMITER //
+CREATE TRIGGER staff_name_before_insert
+BEFORE INSERT ON Staff
+FOR EACH ROW
+BEGIN
+  DECLARE original_name VARCHAR(255);
+  DECLARE count_name INT;
+  DECLARE new_name VARCHAR(255);
+
+  SET original_name = NEW.staff_name;
+  SET count_name = (SELECT COUNT(*) FROM Staff WHERE staff_name LIKE CONCAT(original_name, '%'));
+
+  IF count_name > 0 THEN
+    SET new_name = CONCAT(original_name, count_name);
+    SET NEW.staff_name = new_name;
+  END IF;
+END;
+//
+DELIMITER ;

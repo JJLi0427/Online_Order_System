@@ -71,8 +71,9 @@ public class OrderController {
         }
     }
 
+    // Syncronized
     @RequestMapping("/addorder/{user_id}")
-    public String addOrder(
+    public synchronized String addOrder(
         @PathVariable int user_id, 
         Order order, 
         HttpServletRequest request

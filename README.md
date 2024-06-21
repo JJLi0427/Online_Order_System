@@ -2,6 +2,10 @@
 
 The project is an online ordering system for a restaurant. Customers can log in by entering their mobile number, table number, and the number of diners, choose the quantity of different dishes from the menu, and place an order after filling in their taste preferences. The system includes backend management. Backend users are divided into employees and shop owners. Employees can only track and modify the order status in the backend, while shop owners can modify the menu, employee list, order list, etc.
 
+## 项目简介
+
+这是一个餐厅在线点餐系统，包含用户使用界面和功能实现，后台店员和管理员的操作界面和功能实现。用户通过输入手机号，用餐人数，餐桌号进入点餐，手动选择菜品和数量进行下单，实现了口味偏好备注的功能。后台员工/管理员界面需要密码登录，进入后可以操作为完成的订单完成，管理员界面功能丰富，实现了员工/用户管理，菜单管理，订单管理和缓存清理等功能。项目使用SSM框架开发，使用maven做包管理，利用上了许多Mysql数据库的特性。整体分数据库服务器，应用服务器，WEB服务器三部分设计，应用可通过Tomcat服务或者是容器部署。
+
 ## Project Display
 
 The project has designed different user interfaces and entrances for users, administrators, and employees, corresponding to different functions  
@@ -10,12 +14,16 @@ The project has designed different user interfaces and entrances for users, admi
 
 ## Frameworks Used
 
-The project uses the following key frameworks:
+The project uses the following key frameworks(SSM):
 
 * Spring: Provides the foundational support for developing Java applications.
 * Spring MVC: Used for building web applications.
 * MyBatis: Used for persistence and database operations.
 Logback: Used for logging application events.
+
+## Database Feature Used
+
+Table, Views, Index, Procedure, Trigger
 
 ## Project Structure
 
